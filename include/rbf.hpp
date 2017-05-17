@@ -1,7 +1,3 @@
-#include <algorithm>
-using namespace std;
-#define QX_DEF_CHAR_MAX 255
-
 /***********************************************************************
 
 Notice:     Large sigma_spatial/sigma_range parameter may results in 
@@ -12,6 +8,12 @@ Reference:  Qingxiong Yang, Recursive Bilateral Filtering,
             European Conference on Computer Vision (ECCV) 2012, 399-413.
 
 ************************************************************************/
+
+#ifndef INCLUDE_RBF
+#define INCLUDE_RBF
+#include <math.h>
+#include <string.h>
+#define QX_DEF_CHAR_MAX 255
 
 
 void recursive_bf(
@@ -42,7 +44,7 @@ void recursive_bf(
 	float range_table[QX_DEF_CHAR_MAX + 1];
 	float inv_sigma_range = 1.0f / (sigma_range * QX_DEF_CHAR_MAX);
 	for (int i = 0; i <= QX_DEF_CHAR_MAX; i++) 
-		range_table[i] = exp(-i * inv_sigma_range);
+		range_table[i] = static_cast<float>(exp(-i * inv_sigma_range));
 
 	float alpha = static_cast<float>(exp(-sqrt(2.0) / (sigma_spatial * width)));
 	float ypr, ypg, ypb, ycr, ycg, ycb;
@@ -233,3 +235,5 @@ void recursive_bf(
 		img_out[i] = img_in[i];
 	recursive_bf(img_out, sigma_spatial, sigma_range, width, height, channel, buffer);
 }
+
+#endif // INCLUDE_RBF
