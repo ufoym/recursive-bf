@@ -29,7 +29,7 @@ Usage:      // ----------------------------------------------------------
             // ----------------------------------------------------------
 
             unsigned char * img = ...;                    // input image
-            unsigned char * img_out = nullptr;            // output image
+            unsigned char * img_out = 0;            // output image
             int width = ..., height = ..., channel = ...; // image size
             recursive_bf(img, img_out, 
                          sigma_spatial, sigma_range, 
@@ -40,7 +40,7 @@ Usage:      // ----------------------------------------------------------
             // ----------------------------------------------------------
 
             unsigned char * img = ...;                    // input image
-            unsigned char * img_out = nullptr;            // output image
+            unsigned char * img_out = 0;            // output image
             int width = ..., height = ..., channel = ...; // image size
             float * buffer = new float[                   // external buf
                                  ( width * height* channel 
@@ -70,7 +70,7 @@ inline void recursive_bf(
     unsigned char *& img_out, 
     float sigma_spatial, float sigma_range, 
     int width, int height, int channel, 
-    float * buffer /*= nullptr*/);
+    float * buffer /*= 0*/);
 
 // ----------------------------------------------------------------------
 
@@ -78,13 +78,13 @@ inline void _recursive_bf(
     unsigned char * img,
     float sigma_spatial, float sigma_range, 
     int width, int height, int channel,
-    float * buffer = nullptr)
+    float * buffer = 0)
 {
     const int width_height = width * height;
     const int width_channel = width * channel;
     const int width_height_channel = width * height * channel;
 
-    bool is_buffer_internal = (buffer == nullptr);
+    bool is_buffer_internal = (buffer == 0);
     if (is_buffer_internal)
         buffer = new float[(width_height_channel + width_height 
                             + width_channel + width) * 2];
@@ -285,9 +285,9 @@ inline void recursive_bf(
     unsigned char *& img_out,
     float sigma_spatial, float sigma_range,
     int width, int height, int channel,
-    float * buffer = nullptr)
+    float * buffer = 0)
 {
-    if (img_out == nullptr)
+    if (img_out == 0)
         img_out = new unsigned char[width * height * channel];
     for (int i = 0; i < width * height * channel; ++i)
         img_out[i] = img_in[i];

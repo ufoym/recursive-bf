@@ -1,7 +1,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "stb_image.hpp"
-#include "stb_image_write.hpp"
+#include "stb_image.h"
+#include "stb_image_write.h"
 #include "../include/rbf.hpp"
 #include <stdio.h>
 #include <time.h>
@@ -21,8 +21,8 @@ int main(int argc, char*argv[])
 	{
 		printf("Usage:\n");
 		printf("--------------------------------------------------------------------\n\n");
-		printf("*.exe: filename_out filename_in (only ppm image) \n");
-		printf("       sigma_spatial(e.g., 0.03) sigma_range(e.g., 0.1)\n\n");
+		printf("rbf filename_out filename_in (only support ppm images) \n");
+		printf("    sigma_spatial(e.g., 0.03) sigma_range(e.g., 0.1)\n\n");
 		printf("--------------------------------------------------------------------\n");
 		return(-1);
 	}
@@ -36,7 +36,7 @@ int main(int argc, char*argv[])
 
 		int width, height, channel;
 		unsigned char * img = stbi_load(filename_in, &width, &height, &channel, 0);
-		unsigned char * img_out = nullptr;
+		unsigned char * img_out = 0;
 		Timer timer;
 
 		timer.start();

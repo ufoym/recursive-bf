@@ -88,3 +88,11 @@ Debug
 *.user
 *.bmp
 *.jpg
+
+CMakeFiles
+*.vcxproj
+*.filters
+*.opendb
+*.db
+CMakeCache.txt
+cmake_install.cmake
