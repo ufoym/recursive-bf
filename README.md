@@ -30,11 +30,11 @@ For more details of the algorithm, please refer to the original paper
 
 Optionally, you can cite this repo
 
-    @misc{Ming2017,
-      author = {Ming Yang},
-      title = {A lightweight C++ library for recursive bilateral filtering},
-      year = {2017},
-      publisher = {GitHub},
-      journal = {GitHub repository},
-      howpublished = {\url{https://github.com/ufoym/RecursiveBF}}
+    @misc{ming2017recursive,
+        author = {Ming Yang},
+        title = {A lightweight C++ library for recursive bilateral filtering},
+        year = {2017},
+        publisher = {GitHub},
+        journal = {GitHub repository},
+        howpublished = {\url{https://github.com/ufoym/RecursiveBF}}
     }
